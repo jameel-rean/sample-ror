@@ -1,0 +1,52 @@
+I, [2015-08-04T13:25:58.147777 #25484]  INFO -- : Refreshing Gem list
+I, [2015-08-04T13:26:00.256558 #25484]  INFO -- : listening on addr=/home/jameel/demo/shared/sockets/unicorn.sock fd=11
+I, [2015-08-04T13:26:00.256709 #25484]  INFO -- : worker=0 spawning...
+I, [2015-08-04T13:26:00.257757 #25484]  INFO -- : worker=1 spawning...
+I, [2015-08-04T13:26:00.258527 #25495]  INFO -- : worker=0 spawned pid=25495
+I, [2015-08-04T13:26:00.261022 #25484]  INFO -- : master process ready
+I, [2015-08-04T13:26:00.265657 #25495]  INFO -- : worker=0 ready
+I, [2015-08-04T13:26:00.271835 #25498]  INFO -- : worker=1 spawned pid=25498
+I, [2015-08-04T13:26:00.273737 #25498]  INFO -- : worker=1 ready
+I, [2015-08-04T13:28:09.383931 #25484]  INFO -- : reaped #<Process::Status: pid 25495 exit 0> worker=0
+I, [2015-08-04T13:28:09.384141 #25484]  INFO -- : reaped #<Process::Status: pid 25498 exit 0> worker=1
+I, [2015-08-04T13:28:09.384258 #25484]  INFO -- : master complete
+I, [2015-08-04T13:28:12.195351 #25730]  INFO -- : Refreshing Gem list
+I, [2015-08-04T13:28:13.355602 #25730]  INFO -- : unlinking existing socket=/home/jameel/demo/shared/sockets/unicorn.sock
+I, [2015-08-04T13:28:13.355750 #25730]  INFO -- : listening on addr=/home/jameel/demo/shared/sockets/unicorn.sock fd=11
+I, [2015-08-04T13:28:13.355843 #25730]  INFO -- : worker=0 spawning...
+I, [2015-08-04T13:28:13.359618 #25730]  INFO -- : worker=1 spawning...
+I, [2015-08-04T13:28:13.363998 #25730]  INFO -- : master process ready
+I, [2015-08-04T13:28:13.369295 #25739]  INFO -- : worker=0 spawned pid=25739
+I, [2015-08-04T13:28:13.379934 #25741]  INFO -- : worker=1 spawned pid=25741
+I, [2015-08-04T13:28:13.381872 #25741]  INFO -- : worker=1 ready
+I, [2015-08-04T13:28:13.382294 #25739]  INFO -- : worker=0 ready
+I, [2015-08-04T13:40:34.060970 #26522]  INFO -- : executing ["/home/jameel/.rvm/gems/ruby-2.1.1@fresh_serverspec/bin/unicorn", "-c", "config/unicorn.rb", "-E", "production", "-D", {11=>#<Kgio::UNIXServer:/home/jameel/demo/shared/sockets/unicorn.sock>}] (in /home/jameel/demo)
+I, [2015-08-04T13:40:34.065500 #26522]  INFO -- : forked child re-executing...
+I, [2015-08-04T13:40:34.350686 #26522]  INFO -- : inherited addr=/home/jameel/demo/shared/sockets/unicorn.sock fd=11
+I, [2015-08-04T13:40:34.351815 #26522]  INFO -- : Refreshing Gem list
+I, [2015-08-04T13:40:35.478245 #26522]  INFO -- : worker=0 spawning...
+I, [2015-08-04T13:40:35.488529 #26522]  INFO -- : worker=1 spawning...
+I, [2015-08-04T13:40:35.489193 #26532]  INFO -- : worker=0 spawned pid=26532
+I, [2015-08-04T13:40:35.491059 #26532]  INFO -- : worker=0 ready
+I, [2015-08-04T13:40:35.498330 #26522]  INFO -- : master process ready
+I, [2015-08-04T13:40:35.502030 #26537]  INFO -- : worker=1 spawned pid=26537
+I, [2015-08-04T13:40:35.512988 #26537]  INFO -- : worker=1 ready
+I, [2015-08-04T13:40:45.135446 #26522]  INFO -- : reaped #<Process::Status: pid 26532 exit 0> worker=0
+I, [2015-08-04T13:40:45.135679 #26522]  INFO -- : reaped #<Process::Status: pid 26537 exit 0> worker=1
+I, [2015-08-04T13:40:45.135791 #26522]  INFO -- : master complete
+E, [2015-08-04T13:40:45.176699 #25730] ERROR -- : reaped #<Process::Status: pid 26522 exit 0> exec()-ed
+I, [2015-08-04T13:41:12.364649 #25730]  INFO -- : reaped #<Process::Status: pid 25739 exit 0> worker=0
+I, [2015-08-04T13:41:12.364921 #25730]  INFO -- : reaped #<Process::Status: pid 25741 exit 0> worker=1
+I, [2015-08-04T13:41:12.365275 #25730]  INFO -- : master complete
+I, [2015-08-04T13:41:16.975525 #26742]  INFO -- : Refreshing Gem list
+I, [2015-08-04T13:41:18.185499 #26742]  INFO -- : unlinking existing socket=/home/jameel/demo/shared/sockets/unicorn.sock
+I, [2015-08-04T13:41:18.185890 #26742]  INFO -- : listening on addr=/home/jameel/demo/shared/sockets/unicorn.sock fd=11
+I, [2015-08-04T13:41:18.186014 #26742]  INFO -- : worker=0 spawning...
+I, [2015-08-04T13:41:18.187139 #26742]  INFO -- : worker=1 spawning...
+I, [2015-08-04T13:41:18.188281 #26742]  INFO -- : master process ready
+I, [2015-08-04T13:41:18.193453 #26752]  INFO -- : worker=0 spawned pid=26752
+I, [2015-08-04T13:41:18.197012 #26752]  INFO -- : worker=0 ready
+I, [2015-08-04T13:41:18.199634 #26754]  INFO -- : worker=1 spawned pid=26754
+I, [2015-08-04T13:41:18.204061 #26754]  INFO -- : worker=1 ready
+D, [2015-08-04T14:59:06.684352 #26742] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2015-08-04T14:59:52.987850 #26742] DEBUG -- : waiting 16.0s after suspend/hibernation

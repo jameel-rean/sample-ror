@@ -1,0 +1,132 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+unicorn init script 
+sudo gedit /etc/init.d/unicorn_demo
+
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          unicorn
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the unicorn app server
+# Description:       starts unicorn using start-stop-daemon
+### END INIT INFO
+
+set -e
+
+USAGE="Usage: $0 <start|stop|restart|upgrade|rotate|force-stop>"
+
+# app settings
+USER="jameel"
+APP_NAME="demo"
+APP_ROOT="/home/$USER/$APP_NAME"
+ENV="production"
+
+# environment settings
+#PATH="/home/$USER/.rvm/environments/ruby-2.1.1@fresh_serverspec"
+
+CMD="rvm use 2.1.1@fresh_serverspec --create && cd $APP_ROOT && bundle exec unicorn -c config/unicorn.rb -E $ENV -D"
+PID="$APP_ROOT/shared/pids/unicorn.pid"
+OLD_PID="$PID.oldbin"
+#startcmd="su - $USER -c $CMD"
+# make sure the app exists
+cd $APP_ROOT || exit 1
+
+sig () {
+  test -s "$PID" && kill -$1 `cat $PID`
+}
+
+oldsig () {
+  test -s $OLD_PID && kill -$1 `cat $OLD_PID`
+}
+
+case $1 in
+  start)
+    sig 0 && echo >&2 "Already running" && exit 0
+    echo "Starting $APP_NAME"
+    su - $USER -c "$CMD"
+    #$startcmd
+    ;;
+  stop)
+    echo "Stopping $APP_NAME"
+    sig QUIT && exit 0
+    echo >&2 "Not running"
+    ;;
+  force-stop)
+    echo "Force stopping $APP_NAME"
+    sig TERM && exit 0
+    echo >&2 "Not running"
+    ;;
+  restart|reload|upgrade)
+    sig USR2 && echo "reloaded $APP_NAME" && exit 0
+    echo >&2 "Couldn't reload, starting '$CMD' instead"
+    $CMD
+    ;;
+  rotate)
+    sig USR1 && echo rotated logs OK && exit 0
+    echo >&2 "Couldn't rotate logs" && exit 1
+    ;;
+  *)
+    echo >&2 $USAGE
+    exit 1
+    ;;
+esac
+
+
+Nginx conf
+sudo gedit /etc/nginx/sites-available/default
+
+upstream app {
+    # Path to Unicorn SOCK file, as defined previously
+    server unix:/home/jameel/demo/shared/sockets/unicorn.sock fail_timeout=0;
+}
+
+server {
+    listen 80;
+    server_name localhost;
+
+    root /home/jameel/demo/public;
+
+    try_files $uri/index.html $uri @app;
+
+    location @app {
+        proxy_pass http://app;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+    }
+
+    error_page 500 502 503 504 /500.html;
+    client_max_body_size 4G;
+    keepalive_timeout 10;
+}
+
