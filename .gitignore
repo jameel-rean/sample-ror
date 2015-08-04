@@ -8,7 +8,8 @@
 /.bundle
 
 *~
-
+*.lock
+unicorn.rb
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
